@@ -400,6 +400,7 @@ int main(int argc,char* argv[]) {
 
 
         //generate 16 graphs
+
         for(int g=0;g<16;g++){
             graph.Generate_stages();
 
@@ -410,11 +411,10 @@ int main(int argc,char* argv[]) {
             auto start_new = system_clock::now();
 
             //divide the node into groups i=0->all node; i!=0->the node for last time
-            node_of_matching.clear();
             number_of_node_for_last_matching=graph.node;
             begin_ptr=0;
             args=new ThreadData[number_of_thread];
-
+            DataForPassingBack* ptr_get;
 
             for(int i=0;i<patternGraph.node;i++){
                 int* neighbor_of_prenode;
@@ -452,7 +452,6 @@ int main(int argc,char* argv[]) {
                 int *passing_node_to_thread_of_each[number_of_thread];
                 DataPassingToThreads *dataPassingToThreads[number_of_thread];
                 int *number_of_matching=new int[number_of_thread]();
-                DataForPassingBack* ptr_get;
 
                 //testing
                 cout<<"in main testing2"<<endl;
