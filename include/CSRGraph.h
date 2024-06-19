@@ -28,7 +28,6 @@ public:
     int *number_of_neighbor;
 
     int new_edge;
-    int **array_changing;
     int* new_col_indices;
     int* new_row_offsets;
 
