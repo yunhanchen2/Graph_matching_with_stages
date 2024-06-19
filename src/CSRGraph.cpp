@@ -159,7 +159,12 @@ void CSRGraph::Clear_new(){
     cout<<"get into clear_new"<<endl;
     
     delete[] new_col_indices;
+    //testing
+    cout<<"get delete[] new_col_indices"<<endl;
     delete[] new_row_offsets;
+
+    //testing
+    cout<<"get delete[] new_row_offsets"<<endl;
 }
 
 int CSRGraph::check_neighbor(int a,int b){
