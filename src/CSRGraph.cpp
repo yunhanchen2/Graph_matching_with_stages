@@ -189,7 +189,7 @@ void CSRGraph::Generate_stages(){
 //    }
 //    cout<<endl;
 
-    array_changing = new int *[change_of_edge*2];//包括了add & delete正向和反向的
+    int **array_changing = new int *[change_of_edge*2];//包括了add & delete正向和反向的
     for (int i = 0; i < change_of_edge*2; ++i) {
         array_changing[i] = new int[2];
     }
@@ -381,7 +381,7 @@ void CSRGraph::Generate_stages(){
     for (int i = 0; i < change_of_edge*2; ++i) {
         delete [] array_changing[i];
     }
-    // delete [] array_changing;
+    delete [] array_changing;
 
     //testing
     cout<<"testing 1"<<endl;
