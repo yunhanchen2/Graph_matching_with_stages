@@ -386,4 +386,6 @@ void CSRGraph::Generate_stages(){
     delete [] new_number_of_neighbor;
     random_delete.clear();
     random.clear();
+
+    cout<<"testing2"<<endl;
 }
