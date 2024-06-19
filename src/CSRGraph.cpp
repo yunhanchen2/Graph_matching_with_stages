@@ -174,8 +174,8 @@ void CSRGraph::Generate_stages(){
     int change_of_edge=edge/percent;
     int *new_number_of_neighbor=new int[node]();
     new_row_offsets=new int[node+1]();
-    new_col_indices=new int[edge-(change_of_edge/2)*2+change_of_edge]();
-
+    new_col_indices=new int[edge-(change_of_edge/2)*4+change_of_edge*2]();
+    
     for(int i=0;i<node;i++){
         new_number_of_neighbor[i]=number_of_neighbor[i];
     }
