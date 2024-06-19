@@ -427,6 +427,9 @@ int main(int argc,char* argv[]) {
                 //query graph中的neighbor限制
                 int size_of_neighbor_of_prenode=0;
 
+                //testing
+                cout<<"in main testing1"<<endl;
+
                 if(nei[id].size()!=0){
                     neighbor_of_prenode=new int[nei[id].size()]();
                     for(int p=0;p<nei[id].size();p++){
@@ -449,6 +452,10 @@ int main(int argc,char* argv[]) {
                 int *passing_node_to_thread_of_each[number_of_thread];
                 DataPassingToThreads *dataPassingToThreads[number_of_thread];
                 int *number_of_matching=new int[number_of_thread]();
+                DataForPassingBack* ptr_get;
+
+                //testing
+                cout<<"in main testing2"<<endl;
 
                 for (int p = 0; p < number_of_thread; p++) {
                     if(p<remaining){
@@ -473,15 +480,27 @@ int main(int argc,char* argv[]) {
                         }
                     }
 
+                    //testing
+                    cout<<"in main testing3 in round "<<p<<endl;
+
                     dataPassingToThreads[p]=new DataPassingToThreads(passing_node_to_thread_of_each[p],i,neighbor_of_prenode,size_of_neighbor_of_prenode,number_of_matching[p]);
+
+                    //testing
+                    cout<<"in main testing4 in round "<<p<<endl;
 
                     args[p].data = dataPassingToThreads[p];
 
+                    //testing
+                    cout<<"in main testing5 in round "<<p<<endl;
+
                     pthread_create(&tid[p], NULL, graph_matching_threads_new, &args[p]);
+
+                    //testing
+                    cout<<"in main testing5 in round "<<p<<endl;
                 }
 
                 //get vectors in each thread and merge them together
-                DataForPassingBack* ptr_get=new DataForPassingBack[number_of_thread];
+                ptr_get=new DataForPassingBack[number_of_thread];
 
                 node_of_matching.clear();
 
@@ -498,11 +517,16 @@ int main(int argc,char* argv[]) {
                 number_of_node_for_last_matching=counter;
 
                 begin_ptr+=i;
+
                 for(int d=0;d<number_of_thread;d++){
                     if(passing_node_to_thread_of_each[d]!=nullptr){
                         delete [] passing_node_to_thread_of_each[d];
                     }
                 }
+
+                //testing
+                cout<<"in main testing6"<<endl;
+
 
                 if(ptr_get!=nullptr){
                     delete [] ptr_get;
@@ -515,6 +539,7 @@ int main(int argc,char* argv[]) {
                 if(number_of_matching!=nullptr){
                     delete [] number_of_matching;
                 }
+
             }
 
             auto end_new = system_clock::now();
@@ -535,8 +560,6 @@ int main(int argc,char* argv[]) {
 
             graph.Clear_new();
         }
-
-
 
         patternGraph.Clear();
 
