@@ -378,10 +378,11 @@ void CSRGraph::Generate_stages(){
 
 
     //delete the new array
-    for (int i = 0; i < change_of_edge*2; ++i) {
-        delete [] array_changing[i];
-    }
-    delete [] array_changing;
+    // for (int i = 0; i < change_of_edge*2; ++i) {
+    //     delete [] array_changing[i];
+    // }
+    // delete [] array_changing;
+    delete [] array_changing[1];
 
     //testing
     cout<<"testing 1"<<endl;
