@@ -155,6 +155,9 @@ void CSRGraph::Clear(){
 }
 
 void CSRGraph::Clear_new(){
+    //testing
+    cout<<"get into clear_new"<<endl;
+    
     delete[] new_col_indices;
     delete[] new_row_offsets;
 }
