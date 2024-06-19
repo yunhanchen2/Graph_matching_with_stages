@@ -5,6 +5,8 @@ project(MyProject)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+find_package(Threads REQUIRED)
+
 include_directories(
     include
 )
@@ -19,4 +21,4 @@ target_link_libraries(${PROJECT_NAME} PUBLIC)
 
 set(EXECUTABLE_NAME "main")
 add_executable(${EXECUTABLE_NAME} "src/main.cpp")
-target_link_libraries(${EXECUTABLE_NAME} ${PROJECT_NAME})
+target_link_libraries(${EXECUTABLE_NAME} ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
