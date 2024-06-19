@@ -413,7 +413,7 @@ int main(int argc,char* argv[]) {
             node_of_matching.clear();
             number_of_node_for_last_matching=graph.node;
             begin_ptr=0;
-//            args=new ThreadData[number_of_thread];
+            args=new ThreadData[number_of_thread];
 
 
             for(int i=0;i<patternGraph.node;i++){
