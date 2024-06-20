@@ -565,6 +565,8 @@ int main(int argc,char* argv[]) {
 
         patternGraph.Clear();
 
+        nei.clear();
+
         graph.Clear();
     }
     return 0;
