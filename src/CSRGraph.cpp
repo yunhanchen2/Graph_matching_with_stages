@@ -157,14 +157,9 @@ void CSRGraph::Clear(){
 void CSRGraph::Clear_new(){
     //testing
     cout<<"get into clear_new"<<endl;
-    
-    delete[] new_col_indices;
-    //testing
-    cout<<"get delete[] new_col_indices"<<endl;
-    delete[] new_row_offsets;
 
-    //testing
-    cout<<"get delete[] new_row_offsets"<<endl;
+    delete[] new_col_indices;
+    delete[] new_row_offsets;
 }
 
 int CSRGraph::check_neighbor(int a,int b){
@@ -182,14 +177,14 @@ void CSRGraph::Generate_stages(){
     int change_of_edge=edge/percent;
     int *new_number_of_neighbor=new int[node]();
     new_row_offsets=new int[node+1]();
-    new_col_indices=new int[edge+change_of_edge*2-(change_of_edge/2)*4+3]();
-    
+    new_col_indices=new int[edge+change_of_edge*2-(change_of_edge/2)*4+2](); //-(change_of_edge/2)*2+(change_of_edge-change_of_edge/2)*2
+
     for(int i=0;i<node;i++){
         new_number_of_neighbor[i]=number_of_neighbor[i];
     }
 
     //deleting generatetion
-    vector <int> random_delete= generateUniqueRandomInts((edge/3)-1,change_of_edge/2);//抽取个数 只取前半部分的点为改变对象 50%
+    vector <int> random_delete= generateUniqueRandomInts((edge/2)-1,change_of_edge/2+2);//抽取个数 只取前半部分的点为改变对象 50%
 
 //    //testing
 //    for(int t=0;t<random_delete.size();t++){
@@ -214,7 +209,7 @@ void CSRGraph::Generate_stages(){
 
 
     //add generation
-    vector <int> random= generateUniqueRandomInts(node/2-1,change_of_edge);
+    vector <int> random= generateUniqueRandomInts(node/2-1,(change_of_edge-change_of_edge/2)*2);
 
 //    //testing
 //    for(int i=0;i<change_of_edge;i++){
@@ -381,16 +376,16 @@ void CSRGraph::Generate_stages(){
 
     new_edge=ptr2;
 
+
     //testing
     cout<<"testing"<<endl;
 
 
     //delete the new array
-    // for (int i = 0; i < change_of_edge*2; ++i) {
-    //     delete [] array_changing[i];
-    // }
-    // delete [] array_changing;
-    delete [] array_changing[change_of_edge*2-1];
+    for (int i = 0; i < change_of_edge*2; i++) {
+        delete [] array_changing[i];
+    }
+    delete [] array_changing;
 
     //testing
     cout<<"testing 1"<<endl;
@@ -400,10 +395,4 @@ void CSRGraph::Generate_stages(){
 
     //testing
     cout<<"testing 2"<<endl;
-
-    random_delete.clear();
-    random.clear();
-
-    //testing
-    cout<<"testing 3"<<endl;
 }
