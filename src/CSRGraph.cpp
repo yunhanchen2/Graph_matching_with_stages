@@ -155,8 +155,8 @@ void CSRGraph::Clear(){
 }
 
 void CSRGraph::Clear_new(){
-    //testing
-    cout<<"get into clear_new"<<endl;
+//    //testing
+//    cout<<"get into clear_new"<<endl;
 
     delete[] new_col_indices;
     delete[] new_row_offsets;
@@ -184,7 +184,7 @@ void CSRGraph::Generate_stages(){
     }
 
     //deleting generatetion
-    vector <int> random_delete= generateUniqueRandomInts((edge/2)-1,change_of_edge/2+2);//抽取个数 只取前半部分的点为改变对象 50%
+    vector <int> random_delete= generateUniqueRandomInts((edge/3)-1,change_of_edge/2);//抽取个数 只取前半部分的点为改变对象 50%
 
 //    //testing
 //    for(int t=0;t<random_delete.size();t++){
@@ -209,7 +209,7 @@ void CSRGraph::Generate_stages(){
 
 
     //add generation
-    vector <int> random= generateUniqueRandomInts(node/2-1,(change_of_edge-change_of_edge/2)*2);
+    vector <int> random= generateUniqueRandomInts(node/2-1,(change_of_edge-change_of_edge/2)*2+2);
 
 //    //testing
 //    for(int i=0;i<change_of_edge;i++){
@@ -237,7 +237,7 @@ void CSRGraph::Generate_stages(){
 
 
     //testing
-    cout<<"node for choosing finished"<<endl;
+//    cout<<"node for choosing finished"<<endl;
 //    for(int t=0;t<change_of_edge*2;t++){
 //        cout<<array_changing[t][0]<<" "<<array_changing[t][1]<<endl;
 //    }
@@ -246,7 +246,7 @@ void CSRGraph::Generate_stages(){
     sort(array_changing, array_changing + change_of_edge*2, compare);
 
     //testing
-    cout<<"node after sorting finished"<<endl;
+//    cout<<"node after sorting finished"<<endl;
 //    for(int t=0;t<change_of_edge*2;t++){
 //        cout<<array_changing[t][0]<<" "<<array_changing[t][1]<<endl;
 //    }
@@ -281,7 +281,7 @@ void CSRGraph::Generate_stages(){
     changing_row_offset[size]=acc;
 
     //testing
-    cout<<"the two array finished"<<endl;
+//    cout<<"the two array finished"<<endl;
 //    for(int i=0;i<size;i++){
 //        cout<<edge_change[i]<<" "<<numFrequency[i]<<endl;
 //    }
@@ -290,8 +290,8 @@ void CSRGraph::Generate_stages(){
 //    }
 //    cout<<endl;
 
-    //testing
-    cout<<"here 1"<<endl;
+//    //testing
+//    cout<<"here 1"<<endl;
 
 
     delete [] numFrequency;
@@ -350,13 +350,13 @@ void CSRGraph::Generate_stages(){
                 ptr2++;
             }
         }
-        if(i==node-2){
-            cout<<"here 2"<<endl;
-        }
+//        if(i==node-2){
+//            cout<<"here 2"<<endl;
+//        }
     }
 
     //testing
-    cout<<"the final two array for recording the new graph: "<<endl;
+//    cout<<"the final two array for recording the new graph: "<<endl;
 //    for(int i=0;i<node;i++){
 //        cout<<new_number_of_neighbor[i]<<" ";
 //    }
@@ -377,8 +377,8 @@ void CSRGraph::Generate_stages(){
     new_edge=ptr2;
 
 
-    //testing
-    cout<<"testing"<<endl;
+//    //testing
+//    cout<<"testing"<<endl;
 
 
     //delete the new array
@@ -387,12 +387,12 @@ void CSRGraph::Generate_stages(){
     }
     delete [] array_changing;
 
-    //testing
-    cout<<"testing 1"<<endl;
+//    //testing
+//    cout<<"testing 1"<<endl;
 
     delete [] edge_change;
     delete [] new_number_of_neighbor;
 
-    //testing
-    cout<<"testing 2"<<endl;
+//    //testing
+//    cout<<"testing 2"<<endl;
 }
