@@ -130,6 +130,8 @@ void* graph_matching_threads(void *n){
                 }
             }
         }
+
+        delete [] tem;
     }
 
     pthread_exit(passingBack);
@@ -145,7 +147,6 @@ void* graph_matching_threads_new(void *n){
     DataForPassingBack *passingBack=new DataForPassingBack();
 
     passingBack->number_of_matching_node=0;
-
 
     if(dataPassingToThreads->round_index==0){
         //only check the degree
@@ -210,6 +211,7 @@ void* graph_matching_threads_new(void *n){
                 }
             }
         }
+        delete [] tem;
     }
 
     pthread_exit(passingBack);
@@ -548,7 +550,7 @@ int main(int argc,char* argv[]) {
             auto duration_new= duration_cast<microseconds>(end_new-start_new);
             cout<<"time: "<<double (duration_new.count())*microseconds ::period ::num/microseconds::period::den<<endl;
 
-            set < set<int> > ss;
+            ss.clear();
             for(int i=0;i<counter;i++){
                 set<int> each;
                 for(int j=0;j<patternGraph.node;j++){
@@ -564,9 +566,6 @@ int main(int argc,char* argv[]) {
         }
 
         patternGraph.Clear();
-
-        nei.clear();
-
         graph.Clear();
     }
     return 0;
