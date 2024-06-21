@@ -101,6 +101,7 @@ void* graph_matching_threads(void *n){
                 }
             }
 
+            neibor.clear();
 
             //cut off the node before the node and have a new matching
             vector<int>::iterator it;
@@ -350,6 +351,7 @@ int main(int argc,char* argv[]) {
             ptr_get=new DataForPassingBack[number_of_thread];
 
             node_of_matching.clear();
+//            node_of_matching.resize(0);
 
             for (int p = 0; p < number_of_thread; p++) {
                 void * ptr;
@@ -358,6 +360,7 @@ int main(int argc,char* argv[]) {
 
                 counter+=ptr_get[p].number_of_matching_node;
 
+//                node_of_matching.resize(counter);
                 node_of_matching.insert(node_of_matching.end(),ptr_get[p].matching_node.begin(),ptr_get[p].matching_node.end());
 
                 ptr_get[p].matching_node.clear();
@@ -505,6 +508,7 @@ int main(int argc,char* argv[]) {
                 ptr_get=new DataForPassingBack[number_of_thread];
 
                 node_of_matching.clear();
+//            node_of_matching.resize(0);
 
                 for (int p = 0; p < number_of_thread; p++) {
                     void * ptr;
@@ -513,6 +517,7 @@ int main(int argc,char* argv[]) {
 
                     counter+=ptr_get[p].number_of_matching_node;
 
+//                node_of_matching.resize(counter);
                     node_of_matching.insert(node_of_matching.end(),ptr_get[p].matching_node.begin(),ptr_get[p].matching_node.end());
 
                     ptr_get[p].matching_node.clear();
